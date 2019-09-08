@@ -728,15 +728,19 @@ public class Executor {
 
 由下图可见，我是创建了一个mybatis项目，在spring-demo把mybatis作为二方库导入使用
 
-![mybatis01](images/mybatis01.png)
+![mybatis01](/images/mybatis01.png)
 
 ## 三 Mybatis基于dao层的CRUD操作
 
 使用要求：
 
 1. 持久层接口和持久层接口的映射配置必须在相同的包下
+
 2. 持久层映射配置中 mapper 标签的 namespace 属性取值必须是持久层接口的全限定类名
-3. SQL 语句的配置标签<select>,<insert>,<delete>,<update>的 id 属性必须和持久层接口的方法名相同。 
+
+3. ```
+   SQL 语句的配置标签<select>,<insert>,<delete>,<update>的 id 属性必须和持久层接口的方法名相同。 
+   ```
 
 ### 3.1 定义dao层接口
 

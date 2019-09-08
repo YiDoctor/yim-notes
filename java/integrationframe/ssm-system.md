@@ -348,7 +348,7 @@ Spring Security 目前支持认证一体化如下认证技术：
 
 4. **测试，在项目webapp下创建index.html编写任意内容，启动项目访问发现会跳转如下页面：**
 
-   ![security01](images/security01.png)
+   ![security01](/images/security01.png)
 
 我们没有建立下面的登录页面，为什么Spring Security会跳到上面的登录页面呢？这是我们设置http的**auto-config=”true”时Spring Security自动为我们生成的**。
 
