@@ -108,7 +108,7 @@ CAS的原理：
 
 **此部分内容参考：**
 
-[多线程编程高级（偏面试）](/java/advcanced/advanced-thread.md)
+[多线程编程高级（偏面试）](/java/advanced/advanced-thread.md)
 
 #### 2.1.3 ArrayList和LinkedList
 
@@ -134,5 +134,5 @@ Java中提供了Class、Method、Construction、Filed类实现了动态创建对
 
 ![Java新版本特性](../images/版本特性.png)
 
-[【08】Java8版本特性](/Java/base/java8.md)
+[Java8版本特性](/java/base/java8.md)
 

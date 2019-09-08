@@ -14,11 +14,11 @@
 
 **Spring学习笔记：**
 
-[【01】Spring5基本内容和配置使用](/Java/integrationframe/spring5.md)
+[【01】Spring5基本内容和配置使用](/java/integrationframe/spring5.md)
 
-[【02】SpringMVC学习笔记](/Java/integrationframe/springmvc.md)
+[【02】SpringMVC学习笔记](/java/integrationframe/springmvc.md)
 
-[【03】Spring联系项目（权限管理系统）](/Java/integrationframe/ssm-system.md)
+[【03】Spring联系项目（权限管理系统）](/java/integrationframe/ssm-system.md)
 
 ## 二 SpringBoot
 
@@ -26,6 +26,6 @@
 
 **基于SpringBoot 2.0 +：**
 
-[【01】SpringBoot基础](/Java/integrationframe/springboot.md)
+[【01】SpringBoot基础](/java/integrationframe/springboot.md)
 
 ## 三 SpringCloud
