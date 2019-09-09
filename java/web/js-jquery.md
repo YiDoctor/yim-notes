@@ -231,7 +231,7 @@ Promise 对象有以下几种状态：
 - rejected：失败，没有完成操作。
 - settled：Promise 处于 fulfilled 或 rejected 二者中的任意一个状态, 不会是 pending
 
-![](https://i.imgur.com/z0dvJpo.png)
+![](../images/z0dvJpo.png)
 
 示例：使用XMLHTTPRequest和Promise对象加载图片
 
@@ -850,7 +850,7 @@ car1.color = "block";
 
 #### 1.15.2 Employee层级结构（类似于Java中多层继承） ####
 
-![](https://i.imgur.com/D6FGpgI.png)
+![](../images/D6FGpgI.png)
 
 JavaScript中不支持多重继承
 
@@ -866,12 +866,14 @@ JavaScript中不支持多重继承
 
 ## 二 JQuery
 
-![](https://i.imgur.com/rw261ct.png)
+![](../images/rw261ct.png)
 ### Jquery的onload实现 ### 
 
-	$(function(){
-	    //当网页加载完毕时执行
-	});
+```javascript
+$(function(){
+    //当网页加载完毕时执行
+});
+```
 
 ### 选择器 ###
 #### 基本选择器 ####

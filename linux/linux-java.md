@@ -46,7 +46,7 @@
     export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
     export PATH=$PATH:$JAVA_HOME/bin
 
-![](https://i.imgur.com/K5kASfP.png)
+![](../images/K5kASfP.png)
 
 点击键盘【i】键，修改并增加如下内容信息，完成之后，点击键盘【Esc】键，输入【:wq!】,点击回车键，保存退出
 

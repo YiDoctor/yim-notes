@@ -1,6 +1,6 @@
 # HTTP网络协议 #
 
-![](https://i.imgur.com/dqd8AZY.png)
+![](../images/dqd8AZY.png)
 
 Http协议是基于TCP/IP的超文本传输协议，属于应用层的面向对象的协议，工作与客户端--服务器架构之上
 
@@ -84,11 +84,11 @@ Response响应：响应头、响应体、响应行
 
 **8、转发和重定向**
 
-![](https://i.imgur.com/HUiEmll.png)
+![](../images/HUiEmll.png)
 
 **9、Cookis和Session**
 
-![](https://i.imgur.com/SSwzCtl.png)
+![](../images/SSwzCtl.png)
 
 	1、Cookie
 	常用方法:

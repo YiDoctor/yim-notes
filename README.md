@@ -79,7 +79,7 @@
 - [Linux 下安装配置java环境](/linux/linux-java.md)
 - [Linux 下配置网卡信息](/linux/linux-ens33.md)
 - [Linux 下安装nginx](/linux/linux-nginx.md)
-- [Linux 下搭建nginx集群](/linux/linux-java.md)
+- [Linux 下搭建nginx集群](/linux/linux-nginx02.md)
 - [Linux 下搭建 Mysql 主从配置（接上面 Mysql 内容）](/linux/mysql-master-salve.md)
 - [Linux 下在 Tomcat 中部署项目](/linux/tomcat-project.md)
 - [deepin 和 manjaro 桌面系统](/linux/deepin-manjaro.md.md)

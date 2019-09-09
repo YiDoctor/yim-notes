@@ -1,9 +1,5 @@
 # Linux下安装Nginx #
 
-date: 2018/12/9 18:46:39 
-
-## Linux下安装Nginx ##
-
 1 安装wget,用来下载nginx安装包
 
     yum install wget -y
@@ -29,15 +25,15 @@ date: 2018/12/9 18:46:39
 7 官网下载 [http://nginx.org/en/download.html](http://nginx.org/en/download.html) 找到自己需要的版本下载
 
     wget  http://nginx.org/download/nginx-1.15.7.tar.gz
-
+    
     tar zxvf nginx-1.15.7.tar.gz
 
 8 编译 安装
 
     mkdir nginx
-
+    
     cd nginx-1.15.7 解压目录
-
+    
     ./configure  --prefix=/opt/nginx  #指定安装目录
 
 9 在/opt/nginx-1.15.7目录下执行编译命令
@@ -51,13 +47,13 @@ date: 2018/12/9 18:46:39
 11 启动
 
 	cd /
-
-    cd /opt/nginx/sbin/
-    
-    ./nginx 
-    ./nginx -s reload
-    ./nginx -s quit:此方式停止步骤是待nginx进程处理任务完毕进行停止。
-    ./nginx -s stop:此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程。
+	
+	cd /opt/nginx/sbin/
+	
+	./nginx 
+	./nginx -s reload
+	./nginx -s quit:此方式停止步骤是待nginx进程处理任务完毕进行停止。
+	./nginx -s stop:此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程。
 
 12 开放nginx默认端口号80
 
@@ -65,4 +61,4 @@ date: 2018/12/9 18:46:39
 
 13 远程访问进行安装测试
 
-![](https://i.imgur.com/OZepdGC.png)
+![](../images/OZepdGC.png)

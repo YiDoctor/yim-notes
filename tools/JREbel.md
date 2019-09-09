@@ -1,8 +1,4 @@
-title: MyEclipse IDEA安装 激活Jrebel
-date: 2018/11/11 11:51:22 
-categories: 工欲善其事 必先利其器
-
-------
+# MyEclipse IDEA安装 激活Jrebel
 
 MyEclipse IDEA通用最新破解方法
 ---
@@ -11,17 +7,17 @@ MyEclipse IDEA通用最新破解方法
 
 JRebel的安装在MyEclipse 在help里面找到**Eclipse Marketplace**
 
-![](https://i.imgur.com/R2FIqhh.png)
+![](../images/R2FIqhh.png)
 
 #### Eclipse搜索Jrebel直接下载 ####
 
 #### MyEclipse 中需要搜索下面这个插件进行安装 ####
 
-![](https://i.imgur.com/FXeh9kO.png)
+![](../images/FXeh9kO.png)
 
 重启Myeclipse后选择如下图按钮安装
 
-![](https://i.imgur.com/SW7BpuP.png)
+![](../images/SW7BpuP.png)
 
 #### InterlliJIDEA ####
 直接在setting中找到plugin点进去搜索下载
@@ -43,7 +39,7 @@ http://xxx.com:8888/88414687-3b91-4286-89ba-2dc813b107ce
 将xxx改为自己本地地址
 随便输入一个邮箱进行激活
 
-![](https://i.imgur.com/Gt4zanZ.png)
+![](../images/Gt4zanZ.png)
 
 激活之后选择离线
 

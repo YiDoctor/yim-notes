@@ -14,11 +14,11 @@
 
 ## 一 XML ##
 
-![](https://i.imgur.com/amo8cRA.png)
+![](../images/amo8cRA.png)
 
 **XML中的注意事项:**
 
-![](https://i.imgur.com/McCfxqZ.png)
+![](../images/McCfxqZ.png)
 
 ## 二 HTML ##
 
@@ -99,7 +99,7 @@ tags 具有属性 也可以使用自定义的方式定义属性
 
 ### 2.6 HTML实体 ###
 
-![](https://i.imgur.com/WaWn0pr.png)
+![](../images/WaWn0pr.png)
 
 URL统一资源定位器
 URL 编码会将字符转换为可通过因特网传输的格式 ASCII字符集
@@ -246,7 +246,7 @@ Server-Sent 事件 - 单向消息传递
 
 ## 四 CSS ##
 
-![](https://i.imgur.com/GC1RxMG.png)
+![](../images/GC1RxMG.png)
 
 ### 4.1 CSS 层叠样式表 ###
 

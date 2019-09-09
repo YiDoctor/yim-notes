@@ -1,7 +1,5 @@
 # Linux配置网卡信息  #
 
-date: 2018/12/7 16:13:52
-
 ## Linux配置网卡信息 ##
 
 第1步：首先切换到/etc/sysconfig/network-scripts目录中（存放着网卡的配置文件）。
@@ -38,7 +36,7 @@ date: 2018/12/7 16:13:52
 	
 	4 点击【DHCP设置】，查看IP起始段，方便设置IP地址 
 
-![](https://i.imgur.com/AFOaO9g.png)
+![](../images/AFOaO9g.png)
 
 ### 2、进入命令窗口，cd / 切换到root的根目录，输入命令：vim /etc/sysconfig/network-scripts/ifcfg-ens33  ###
 

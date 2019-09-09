@@ -9,7 +9,7 @@ date: 2018/12/12 10:17:40
 
 此处可以选择要打的包形式
 
-![](https://i.imgur.com/hv3Oeod.png)
+![](../images/hv3Oeod.png)
 
 在Tomcat中配置,Tomcat运行前进行的打包工作
 
@@ -21,7 +21,7 @@ date: 2018/12/12 10:17:40
 
 Alt+v 在Tool windows中找到Maven Projects,或者配置自定义快捷键找到
 
-![](https://i.imgur.com/ahbg4d8.png)
+![](../images/ahbg4d8.png)
 
 Maven编译命令   mvn clean
 打包命令    mvn package
@@ -33,14 +33,14 @@ Maven编译命令   mvn clean
 
 2 在tomcat/bin目录下点击startup.bat启动项目或者cmd命令到tomcat/bin目录下,建议使用管理员权限
 
-![](https://i.imgur.com/Y9tbWjA.png)
+![](../images/Y9tbWjA.png)
 
 如果tomcat开始部署项目
 
 3 项目启动成功使用 
 
     http//:ip:端口号/war名称/ 
-
+    
     进行访问,能正常访问则部署成功
 
 项目启动失败/思考可能原因/查看tomcat启动日志
@@ -49,20 +49,20 @@ Maven编译命令   mvn clean
 
 1 将刚刚windows中tomcat关闭,使用winSCP直接拖入刚刚的Tomcat,由于系统环境改变,请确认Linux系统中是否已经配置好java环境,已经数据库连接是否正确以及其他相关接口的配置是否可以使用.
 
-![](https://i.imgur.com/WotEnE4.png)
+![](../images/WotEnE4.png)
 
 2 cd/opt/tomcat-8.0/bin 进入tomcat/bin目录 并给bin目录下文件赋权
 
-![](https://i.imgur.com/uNaeXns.png)
+![](../images/uNaeXns.png)
 
 3 远程访问项目,在项目启动前可以先设置远程访问
 
     首先需要开启防火墙的端口号规则（安全组），将tomcat访问端口号开通（暂时开通，如果服务器重启，则需要再次开启），开启命令如下：
-
+    
     /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
-
+    
     或使用如下命令
-
+    
     firewall-cmd --add-port=8080/tcp --zone=public --permanent 
     firewall-cmd  --reload
 
@@ -76,7 +76,7 @@ Maven编译命令   mvn clean
 6 若tomcat进程没有正常关闭
 
     ps -ef|grep tomcat
-
+    
     使用杀死进程的方式，停止tomcat，命令：kill -9 tomcat进程号
 
 7 部署项目
@@ -91,19 +91,19 @@ Maven编译命令   mvn clean
 ## 关于maven配置的坑 ##
 
     <mirrors>
-		<mirror>
-			<id>nexus-aliyun</id>
-			<mirrorOf>central</mirrorOf>
-			<name>Nexus aliyun</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
-		</mirror> 
-	</mirrors>
+    	<mirror>
+    		<id>nexus-aliyun</id>
+    		<mirrorOf>central</mirrorOf>
+    		<name>Nexus aliyun</name>
+    		<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    	</mirror> 
+    </mirrors>
 
 
     <mirrorOf>central</mirrorOf>中的值可以是*,central,maven
-
+    
     *的意思就是（根据mirrorOf和repository的id）匹配所有的库（repository），这样就是说如果你需要某个jar，他会从镜像地址去下载这个jar。不管你配置了多少个库，即使这些库的地址不一样，仍然会从镜像地址访问
-
+    
     center,表示当前镜像为远程中央仓库的镜像
     
     弄掉重试,换掉本地仓,发现jar包没有下载,才找到原来坑在这儿!

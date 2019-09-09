@@ -1,54 +1,58 @@
-# Servlet和JSP #
+# Servlet和JSP
 
 **B/S**
 
-![](https://i.imgur.com/KWbH2So.png)
+![](../images/KWbH2So.png)
 
-## Servlet ##
+## 一 Servlet
 
-![](https://i.imgur.com/SUV9jW5.png)	
-### Servlet编写 ###
+![](../images/SUV9jW5.png)	
+### 1.1 Servlet编写
 
-	案例: 
-	public class Servlet1 extends HttpServlet {
-	    protected void service(HttpServletRequest request, HttpServletResponse response) 
-	            throws ServletException, IOException {
-	        response.setContentType("text/html;charset=utf-8");
-	        PrintWriter pw = response.getWriter();
-	        pw.append("<h1>我们的第一个servlet</h1>");
-	    }
-	}
-### xml中配置Servlet ###
+```java
+案例: 
+public class Servlet1 extends HttpServlet {
+    protected void service(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter pw = response.getWriter();
+        pw.append("<h1>我们的第一个servlet</h1>");
+    }
+}
+```
+### 1.2 xml中配置Servlet ###
 
-	步骤: 
-	1.  将Servlet 配置到web.xml中, 并起别名
-	    <servlet>
-	        <servlet-name>别名</servlet-name>
-	        <servlet-class>类的全称(包名.类名)</servlet-class>
-	    </servlet>
-	2.  使用Servlet别名, 映射一个或多个网址
-	    <servlet-mapping>
-	        <servlet-name>别名</servlet-name>
-	        <url-pattern>/映射地址</url-pattern>
-	    </servlet-mapping>  
-	    .....
-	    <servlet-mapping>
-	        <servlet-name>别名</servlet-name>
-	        <url-pattern>/映射地址2</url-pattern>
-	    </servlet-mapping>  
-	
-	    映射完毕后, 访问此servlet的方式: 
-	        http://ip地址:端口号/项目名/映射地址
-	案例: 
-	    <servlet>
-	        <servlet-name>s1</servlet-name>
-	        <servlet-class>cn.xdl.demo.Servlet1</servlet-class>
-	      </servlet>
-	      <servlet-mapping>
-	        <servlet-name>s1</servlet-name>
-	        <url-pattern>/666.php</url-pattern>
-	      </servlet-mapping>
-### Servlet生命周期 ###
+```xml
+步骤: 
+1.  将Servlet 配置到web.xml中, 并起别名
+    <servlet>
+        <servlet-name>别名</servlet-name>
+        <servlet-class>类的全称(包名.类名)</servlet-class>
+    </servlet>
+2.  使用Servlet别名, 映射一个或多个网址
+    <servlet-mapping>
+        <servlet-name>别名</servlet-name>
+        <url-pattern>/映射地址</url-pattern>
+    </servlet-mapping>  
+    .....
+    <servlet-mapping>
+        <servlet-name>别名</servlet-name>
+        <url-pattern>/映射地址2</url-pattern>
+    </servlet-mapping>  
+
+    映射完毕后, 访问此servlet的方式: 
+        http://ip地址:端口号/项目名/映射地址
+案例: 
+    <servlet>
+        <servlet-name>s1</servlet-name>
+        <servlet-class>cn.xdl.demo.Servlet1</servlet-class>
+      </servlet>
+      <servlet-mapping>
+        <servlet-name>s1</servlet-name>
+        <url-pattern>/666.php</url-pattern>
+      </servlet-mapping>
+```
+#### 1.2.1 Servlet生命周期 ####
 
 生命周期 在Servlet中, 存在三个方法的体现:
 
@@ -56,7 +60,7 @@
 -  service方法   :   当被调用时, 表示来了一个客户端的请求, 此方法每次都执行在一个新的线程中 !
 -  destroy方法:   当此方法被调用时,表示Servlet即将被销毁 ! 我们常在此方法中 释放资源 !
 
-### 乱码问题 ###
+### 1.3 乱码问题
 
 **1、请求时乱码**
 方式一:可适用于所有问题 引起的乱码
@@ -82,13 +86,13 @@
 
     设置文字编码为UTF-8
     response.setCharacterEncoding("UTF-8");
-### 请求转发和重定向 ###
+### 1.4 请求转发和重定向
 
-![](https://i.imgur.com/HUiEmll.png)
+![](../images/HUiEmll.png)
 
-### Cookie和Session ###
+### 1.5 Cookie和Session ###
 
-![](https://i.imgur.com/SSwzCtl.png)
+![](../images/SSwzCtl.png)
 
 1、Cookie
 
@@ -112,43 +116,49 @@
 
 方式一: 修改所有的session默认时长
 
-    修改tomcat目录下的conf文件夹下的 web.xml
-    <session-config>
-        <session-timeout>数字类型:  分钟</session-timeout>
-    </session-config>
+```xml
+修改tomcat目录下的conf文件夹下的 web.xml
+<session-config>
+    <session-timeout>数字类型:  分钟</session-timeout>
+</session-config>
+```
 
 方式二:修改单个session存活时长:
 
     使用session对象, 调用setMaxInactiveInterval(int 秒);
 
-## JSP ##
+## 二 JSP ##
 
-![](https://i.imgur.com/NiTYq23.png)
+![](../images/NiTYq23.png)
 
 JSP即是Java Server Pages的简称
 
-### JSP三大指令 ###
+### 2.1 JSP三大指令 ###
 
 1、page指令
 
 用来快速的描述JSP页面的信息, 用来对JSP页面进行配置: 
 常用属性: 
 
-	<%@page language=“script language”|--   语言 ,一般为java
-	    extends=“className”  |--可以指定JSP在生成Java文件时, 文件所继承的Java类
-	    *import=“importList”  |--导包列表 ,可以在参数中导入多个包, 多个包之间使用逗号隔开
-	    buffer=“none|kb size”|   --none:不缓冲，默认8k
-	    session=“true|false” |   --是否可以使用session，默认true
-	    autoFlush=“true|false”  --缓冲器是否自动清除，默认true
-	    isThreadSafe=“true|false”|--当前JSP代码执行区是否为线程安全的
-	    *errorPage=“errorPageUrl” |--指定产生错误后, 处理错误的页面
-	    *isErrorPage=“true|false” |--表示当前页面是否为处理错误的页面
-	    contentType=“contentTyepInfo”|--描述网页的内容类型 和 编码格式
-	%>
+```jsp
+<%@page language=“script language”|--   语言 ,一般为java
+    extends=“className”  |--可以指定JSP在生成Java文件时, 文件所继承的Java类
+    *import=“importList”  |--导包列表 ,可以在参数中导入多个包, 多个包之间使用逗号隔开
+    buffer=“none|kb size”|   --none:不缓冲，默认8k
+    session=“true|false” |   --是否可以使用session，默认true
+    autoFlush=“true|false”  --缓冲器是否自动清除，默认true
+    isThreadSafe=“true|false”|--当前JSP代码执行区是否为线程安全的
+    *errorPage=“errorPageUrl” |--指定产生错误后, 处理错误的页面
+    *isErrorPage=“true|false” |--表示当前页面是否为处理错误的页面
+    contentType=“contentTyepInfo”|--描述网页的内容类型 和 编码格式
+%>
+```
 
 导包案例: 
 
-    <%@page import="java.util.HashMap,java.util.ArrayList" %>
+```jsp
+<%@page import="java.util.HashMap,java.util.ArrayList" %>
+```
 
 错误页面处理: 
 
@@ -164,14 +174,16 @@ JSP即是Java Server Pages的简称
 
 **在项目的web.xml中添加如下节点: **
 
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/error.jsp</location>
-    </error-page>
+```xml
+<error-page>
+    <error-code>404</error-code>
+    <location>/error.jsp</location>
+</error-page>
+<error-page>
+    <error-code>500</error-code>
+    <location>/error.jsp</location>
+</error-page>
+```
 
 3、include指令
 
@@ -179,7 +191,9 @@ JSP即是Java Server Pages的简称
 
 格式: 
 
-    <%@include file="文件路径" %>
+```jsp
+<%@include file="文件路径" %>
+```
 
 JSP文件 在引擎转换时, 会将引入的文件代码复制粘贴到include指令的位置, 然后统一进行转换与编译操作(转换为一个Java文件)!
 
@@ -192,7 +206,7 @@ JSP文件 在引擎转换时, 会将引入的文件代码复制粘贴到include�
 include动作引入的JSP文件 , 在转换为.java的时候, 是单独转换的 ,只有在代码执行到include动作时, 才会编译被引入的文件, 动态载入!
 5、taglib指令
 
-### JSP内置对象 ###
+### 2.2 JSP内置对象 ###
 
 |隐含对象|类型|作用|
 |-------|-------- | ----- |
@@ -206,32 +220,33 @@ include动作引入的JSP文件 , 在转换为.java的时候, 是单独转换的
 |page| Object|当前页面本身|
 |exception| Throwable|当page指令中 isErrorPage为true时 才会产生此对象 , 用于收集其他页面产生的异常信息|
 
-### 四大域对象 ###
+### 2.3 四大域对象 ###
 
-![](https://i.imgur.com/axFwqlb.png)
+![](../images/axFwqlb.png)
 
-### EL和JSTL ###
+### 2.4 EL和JSTL ###
 
-![](https://i.imgur.com/71bHVWK.png)
+![](../images/71bHVWK.png)
 
-### Filter&Listener组件 ###
+### 2.5 Filter&Listener组件 ###
 
-![](https://i.imgur.com/QtFizh9.png)
+![](../images/QtFizh9.png)
 
 **在web.xml文件中配置Filter组件和Servlet配置基本一致**
 
 **不使用注解在web.xml中配置Listener**
 
-	<listener >
-	     <listener-class>包名 + 类名</listener-class>
-	</listener>
+```xml
+<listener >
+     <listener-class>包名 + 类名</listener-class>
+</listener>
+```
 
-AJAX
----
+### 2.6 AJAX
 
-![](https://i.imgur.com/iyYRIHl.png)
+![](../images/iyYRIHl.png)
 
-### AJAX优点 ###
+#### 2.6.1 AJAX优点 ####
 
 作用:(1)异步请求和响应处理(2)页面局部刷新处理
 
@@ -241,14 +256,18 @@ AJAX
 - 减少交互的数据量，提升程序性能 
 - 以异步模式处理请求，较少用户操作等待时间，增 强了用户的操作连续性(异步交互) 
 
-### AJAX技术应用步骤 ###
+#### 2.6.2 AJAX技术应用步骤 ####
 
 - 创建XMLHttpRequest对象 
+
 - 调用open方法，创建请求 
+
 - 设定onreadystatechange事件函数，用于 响应处理 
+
 - 调用send方法发送请求 
 
-		// 发送请求之前的准备 
+		```
+	// 发送请求之前的准备 
 		对象.open(请求方式,请求路径,是否异步)  如    xhr.open('get','getDate.do',true);
 		// 注册请求处理函数 
 		xhr.onreadystatechange=function(){
@@ -260,8 +279,8 @@ AJAX
 		};  
 		// 发送请求 
 		xhr.send(null); 
-		
-### AJAX+Json应用 ###
+	```
+#### 2.6.3 AJAX+Json应用
 
 **Json**
 
@@ -269,21 +288,23 @@ AJAX
 - JSON的好处是易于阅读和JavaScript解析 
 - 当客户端和服务器端交互大量数据时，使用JSON 格式传输可以简化客户端和服务器端的编程 
 
-### Jquery和AJAX ###
+#### 2.6.4 Jquery和AJAX ####
 
 jQuery对ajax请求的创建、发送和响应都进  行了相应的封装，同时也考虑 了浏览器的兼容性问题 
 
 1、$.ajax()函数
 
-	$.ajax({     
-		url ：请求 地址,     
-		type ：请求 方式,     
-		async ：默认 true  false 表示同步 请求,     
-		data ：请求 参数,     
-		dataType ：服务器返回的 数据类型,      
-		success ： 服务器 正常 处理时执行的 回调函 数,     
-		error ： 服务器处理出错时执行的 回调函 数, 
-	}); 
+```javascript
+$.ajax({     
+	url ：请求 地址,     
+	type ：请求 方式,     
+	async ：默认 true  false 表示同步 请求,     
+	data ：请求 参数,     
+	dataType ：服务器返回的 数据类型,      
+	success ： 服务器 正常 处理时执行的 回调函 数,     
+	error ： 服务器处理出错时执行的 回调函 数, 
+}); 
+```
 2、$.get()函数
 
 	$.get(url，data，function，datatype)  
@@ -293,11 +314,14 @@ jQuery对ajax请求的创建、发送和响应都进  行了相应的封装，�
 		function：服务器正常处理时执行的回调函数 
 3 $.post()函数
 
+```
  	$.post(url，data，function，datatype)  
 	 	url：请求地址  
 	 	data：请求参数  
 	 	dataType：服务器返回的数据类型  
 	 	function：服务器正常处理时执行的回调函数 
+```
+
 4、$.getJSON函数 
 
 	$.getJSON(url，data，function)  
@@ -311,8 +335,7 @@ jQuery对ajax请求的创建、发送和响应都进  行了相应的封装，�
 	data：请求参数  
 	function：ajax请求处理完毕后执行的回调函数 功能：利用ajax发送一个url请求，将返回结果填充到$obj元素中 （常用于页面引入)
 
-
-## 面试考点：XML、JSP ##
+## 三 面试考点：XML、JSP
 
 
 1、Servlet和JSP的区别?

@@ -1,7 +1,5 @@
 # Linux下搭建mysql主从服务器 #
 
-2018/12/9 20:47:54 
-
 ## 一 配置信息 ##
 
 ### Mysql主服务器： ###
@@ -31,10 +29,10 @@ SSH工具
 1 登录主服务器，执行如下命令
 
     mysql -u root -p
-
+    
     提示密码安全策略问题：
     set global validate_password_policy=0;
-
+    
     grant replication slave on *.* TO 'yimu'@'192.168.192.200' identified by 'Zhou+5201314';//加入从服务器信息
     flush privileges;
 
@@ -44,11 +42,11 @@ SSH工具
     vi /etc/my.cnf
     
     添加如下信息：
-		server-id=168 #IP地址最后几位
-		log_bin=/var/log/mysql/mysql-bin.log #同步日志文件名
-		read-only=0 #只读权限 读写分离
-		binlog-do-db=test #同步指定的库
-		binlog-ignore-db=mysql #忽略掉mysql库
+    	server-id=168 #IP地址最后几位
+    	log_bin=/var/log/mysql/mysql-bin.log #同步日志文件名
+    	read-only=0 #只读权限 读写分离
+    	binlog-do-db=test #同步指定的库
+    	binlog-ignore-db=mysql #忽略掉mysql库
 
 3 登录从服务器，执行如下命令
 
@@ -56,16 +54,16 @@ SSH工具
     
     vi /etc/my.cnf
     
-	server-id=227
-	log_bin=/var/log/mysql/mysql-bin.log
-    
+    server-id=227
+    log_bin=/var/log/mysql/mysql-bin.log
+
 4 重启主服务器
 
     service mysqld restart
     
     提示信息如下
 
-![](https://i.imgur.com/0yMcOIU.png)
+![](../images/0yMcOIU.png)
 
     修改
 
@@ -77,16 +75,16 @@ SSH工具
 
     show master status\G
 
-![](https://i.imgur.com/JJMnBxg.png)
+![](../images/JJMnBxg.png)
 
 6 登录从服务器，设置主从关系
 
     stop slave;
-
+    
     从服务器写入主服务器相关信息,注意其主从一致性
     
     change master to master_host='192.168.192.168',master_user='backup',master_password='Zhou+5201314',master_log_file='mysql-bin.000177',master_log_pos=154;
-
+    
     start slave;
 
 第一次配置可能出错信息:可能未能正常初始化
@@ -105,27 +103,27 @@ SSH工具
     
     重新导入
     source /usr/share/mysql/mysql_system_tables.sql //该sql文件所在位置不同系统可能不同
-
+    
     重启数据库 service mysqld restart
     再次登录
 
 7 查看从服务器的主从关系状态
 
     show slave status\G
-
-	其中
-	    Slave_IO_Running: Yes  \\表示从服务器IO线程运行
-	    Slave_SQL_Running: Yes	\\表示从服务器SQL线程运行
-	
-	![](https://i.imgur.com/gfdYBvj.png)
+    
+    其中
+        Slave_IO_Running: Yes  \\表示从服务器IO线程运行
+        Slave_SQL_Running: Yes	\\表示从服务器SQL线程运行
+    
+    ![](../images/gfdYBvj.png)
 
 如果都为yes则主从搭建成功
 
 8 主从服务器下执行
 
     /sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT #开放3306端口、
-
-	firewall-cmd --permanent --zone=public --add-port=3306/tcp #centos7更换防火墙设置
+    
+    firewall-cmd --permanent --zone=public --add-port=3306/tcp #centos7更换防火墙设置
 
 9 如果主从库中不存在test库，则需要重新建库，然后重启，重新构建主从关系
     
@@ -146,7 +144,7 @@ SSH工具
     从库服务器能连通主库
 
 ### 原理 ###
-![](https://i.imgur.com/e0YmkFS.png)
+![](../images/e0YmkFS.png)
 
 - 从库生成两个线程 一个SQL线程 一个I/O线程;
 - I/O线程会去请求主库的binlog 并得到binlog日志写到relay log(中继日志)文件中;
@@ -156,4 +154,4 @@ SSH工具
 
 ### 关系 ###
 
-![](https://i.imgur.com/7wQj3Mf.png)
+![](../images/7wQj3Mf.png)
