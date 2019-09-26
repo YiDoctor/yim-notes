@@ -149,6 +149,21 @@ BeanFactory 和 ApplicationContext 的区别：创建对象的时间点不一样
     </beans>
     ```
 
+1. 根据 Bean 的配置实例化一个 Bean 对象。
+2. 根据 Spring 上下文对实例化的 bean 进行依赖注入，即对 bean 的属性进行初始化。
+3. 如果实现了 BeanNameAware 接口，将会调用它的 setBeanName 方法，此方法传递的是 Bean 标签中的 id。
+4. 如果 Bean 实现了 BeanFactoryAware 接口，将会调用它的 setBeanFactory 方法，此方法传递的是当前Spring 工厂实例的引用。
+5. 如果 Bean 实现了 ApplicaitonContextAware 接口，那么他将会调用 setApplicaitonContext 方式，此方法传递的是 ApplicationContext 实例的引用。
+6. 如果 Bean 关联了 BeanPostProcess 将会调用初始化方法 postProccessBeforeInitialization(Object obj,String s) 对 Bean 进行操作。
+7. 如果 Bean 实现了 InitializingBean接口，将会调用 afterPropertiesSet方法。
+8. 如果 Bean 在 Spring 的配置文件中配置了 init-method 属性将会自动调用其配置的初始化方法。
+9. 如果 Bean 关联了 BeanPostProcesser 接口，将会调用 postProcessAfterInitialization(Object obj,String s)方法，由于是在 Bean 初始化结束时调用 After 方法，也可用于内存或者缓存技术。
+
+>  注意：以上工作完成就可以使用该 Bean，由于该 Bean 的作用域是 Singletion，所以调用的是同一个 Bean 的实例
+
+10. 当 Bean 不需要时就会进入销毁阶段，如果 Bean 实现了 DisposableBean 接口，则调用其实现的 destory方法将 spring 中的 Bean 进行销毁
+11. 如果配置文件中通过 destory-method 属性指定了 Bean 的销毁方法，将调用起配置的销毁方法进行销毁。
+
 #### 2.3.3 Bean对象的创建三种方式 ####
 
 1. 使用默认无参构造函数，创建对象，如果类中没有无参构造函数，则会报异常
